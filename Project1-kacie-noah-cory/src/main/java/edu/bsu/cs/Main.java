@@ -7,18 +7,36 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        String articleTitle = getArticleTitle();
-        URLConnection connection = GetJsonData.connectToWikipedia(articleTitle);
-        String rawJsonData = GetJsonData.readJsonAsStringFrom(connection);
-        Format.printFormattedJson(rawJsonData);
-    }
+    public static void main(String[] args) {
+        try {
+            String articleTitle = getArticleTitle();
 
-    //hi
+            if (articleTitle == null || articleTitle.isBlank()) {
+                System.out.println("Error: No page requested.");
+                return;
+            }
+
+            URLConnection connection = GetJsonData.connectToWikipedia(articleTitle);
+            String rawJsonData = GetJsonData.readJsonAsStringFrom(connection);
+
+            if (Format.hasNoPage(rawJsonData)) {
+                System.out.println("Error: No page found for title '" + articleTitle + "'");
+                return;
+            }
+
+            Format.printFormattedJson(rawJsonData);
+
+        }  catch (IOException e) {
+            System.out.println("Error: Network issue while trying to reach Wikipedia.");
+        } catch (Exception e) {
+            System.out.println("Unexpected error: " + e.getMessage());
+        }
+
+    }
 
     public static String getArticleTitle() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("enter title below");
+        System.out.println("Enter article title:");
         return scanner.nextLine();
     }
 }
