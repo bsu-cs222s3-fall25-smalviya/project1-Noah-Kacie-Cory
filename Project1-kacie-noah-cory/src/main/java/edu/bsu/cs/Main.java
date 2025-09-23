@@ -1,7 +1,6 @@
 package edu.bsu.cs;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URLConnection;
 import java.util.Scanner;
 
