@@ -11,7 +11,7 @@ public class Main {
         String articleTitle = getArticleTitle();
         URLConnection connection = GetJsonData.connectToWikipedia(articleTitle);
         String rawJsonData = GetJsonData.readJsonAsStringFrom(connection);
-        Format.printRawJson(rawJsonData);
+        Format.printFormattedJson(rawJsonData);
     }
 
 
