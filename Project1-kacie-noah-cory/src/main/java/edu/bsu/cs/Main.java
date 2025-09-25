@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Main {
 
+
+    //this is a test
     public static void main(String[] args) {
         try {
             String articleTitle = getArticleTitle();
