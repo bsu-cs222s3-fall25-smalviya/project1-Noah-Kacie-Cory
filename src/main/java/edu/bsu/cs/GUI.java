@@ -101,6 +101,7 @@ public class GUI extends Application {
             String user = rev.optString("user", "N/A");
             resultsBox.getChildren().add(new Label((i + 1) + ". " + user + " at " + timestamp));
 
+
         }
     }
 private void showAlert(String title, String message) {
