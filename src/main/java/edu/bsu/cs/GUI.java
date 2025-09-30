@@ -38,3 +38,31 @@ public class GUI extends Application {
         primaryStage.setTitle("Wikipedia GUI");
         primaryStage.show();
     }
+    private void handleSearch() {
+        String article = articleInput.getText().trim();
+        if (article.isEmpty()) {
+            showAlert("Input Error", "Please enter an article name.");
+            return;
+        }
+
+        searchButton.setDisable(true);
+        articleInput.setDisable(true);
+        resultsBox.getChildren().clear();
+        redirectLabel.setText("");
+
+        new Thread(() -> {
+            try {
+                
+                URLConnection connection = GetJsonData.connectToWikipedia(article);
+                String json = GetJsonData.readJsonAsStringFrom(connection);
+                Platform.runLater(() -> parseAndDisplayResults(json));
+            } catch (IOException e) {
+                Platform.runLater(() -> showAlert("Network Error", "Could not connect to Wikipedia."));
+            } finally {
+                Platform.runLater(() -> {
+                    searchButton.setDisable(false);
+                    articleInput.setDisable(false);
+                });
+            }
+        }).start();
+    }
