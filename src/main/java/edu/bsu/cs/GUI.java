@@ -98,7 +98,14 @@ public class GUI extends Application {
             JSONObject rev = revisions.getJSONObject(i);
             String timestamp = rev.optString("timestamp", "N/A");
             String user = rev.optString("user", "N/A");
-            resultsBox.getChildren().add(new Label((i + 1) + ". " + timestamp + " at " + user));
+            Label resultLabel = new Label((i + 1) + ". " + user + " at " + timestamp);
+            resultLabel.setStyle(
+                    "-fx-text-fill: purple;" +
+                    "-fx-font-style: italic;" +
+                    "-fx-underline: true;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-background-color: red;"); // change text color here
+            resultsBox.getChildren().add(resultLabel);
         }
     }
 }
