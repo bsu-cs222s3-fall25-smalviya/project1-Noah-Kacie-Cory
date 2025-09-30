@@ -74,4 +74,18 @@ public class GUI extends Application {
         String pageId = pages.keys().next();
         JSONObject page = pages.getJSONObject(pageId);
 
+        if (pageId.equals("-1")) {
+            showAlert("Page Not Found", "This Wikipedia article does not exist.");
+            return;
+        }
+
+       
+        if (page.has("title") && !articleInput.getText().equalsIgnoreCase(page.getString("title"))) {
+            redirectLabel.setText("Redirected to: " + page.getString("title"));
+        }
+
+        if (!page.has("revisions")) {
+            resultsBox.getChildren().add(new Label("No revisions available."));
+            return;
+        }
         
