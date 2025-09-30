@@ -2,6 +2,7 @@ package edu.bsu.cs;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -23,9 +24,12 @@ public class GUI extends Application {
     @Override
     public void start(Stage primaryStage) {
         VBox root = new VBox(10);
-        root.setStyle("-fx-padding: 10;");
+        root.setStyle("-fx-padding: 10; -fx-background-color: lightblue;");
 
         Label title = new Label("Wikipedia Revision Viewer");
+        title.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
+        title.setMaxWidth(Double.MAX_VALUE);
+        title.setAlignment(Pos.CENTER);
 
         HBox inputRow = new HBox(5, new Label("Article:"), articleInput, searchButton);
 
@@ -33,7 +37,7 @@ public class GUI extends Application {
 
         root.getChildren().addAll(title, inputRow, redirectLabel, resultsBox);
 
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 600, 475);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Wikipedia GUI");
         primaryStage.show();
@@ -95,6 +99,7 @@ public class GUI extends Application {
             String timestamp = rev.optString("timestamp", "N/A");
             String user = rev.optString("user", "N/A");
             resultsBox.getChildren().add(new Label((i + 1) + ". " + user + " at " + timestamp));
+
         }
     }
 private void showAlert(String title, String message) {

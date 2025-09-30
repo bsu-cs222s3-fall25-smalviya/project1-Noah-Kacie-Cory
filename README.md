@@ -1,4 +1,4 @@
-# project1-Noah-Kacie-Cory
+# Project1-Noah-Kacie-Cory
 Noah Pinkley  
 Kacie  
 Cory  
