@@ -34,6 +34,7 @@ public class GUI extends Application {
         HBox inputRow = new HBox(5, new Label("Article:"), articleInput, searchButton);
 
         searchButton.setOnAction(e -> handleSearch());
+        searchButton.setDefaultButton(true);
 
         root.getChildren().addAll(title, inputRow, redirectLabel, resultsBox);
 
