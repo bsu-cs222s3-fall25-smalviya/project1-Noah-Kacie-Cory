@@ -88,4 +88,13 @@ public class GUI extends Application {
             resultsBox.getChildren().add(new Label("No revisions available."));
             return;
         }
-        
+
+          JSONArray revisions = page.getJSONArray("revisions");
+        for (int i = 0; i < revisions.length(); i++) {
+            JSONObject rev = revisions.getJSONObject(i);
+            String timestamp = rev.optString("timestamp", "N/A");
+            String user = rev.optString("user", "N/A");
+            resultsBox.getChildren().add(new Label((i + 1) + ". " + user + " at " + timestamp));
+        }
+    }
+
