@@ -97,4 +97,10 @@ public class GUI extends Application {
             resultsBox.getChildren().add(new Label((i + 1) + ". " + user + " at " + timestamp));
         }
     }
-
+private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+}
