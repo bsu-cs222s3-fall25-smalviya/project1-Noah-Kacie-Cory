@@ -9,8 +9,8 @@ How to Run
 
 Open your compiler prompt.  
 
-Run the program.  
+Run the launcher files to access the GUI
 
-When it asks, type a Wikipedia article title and press Enter.  
+enter the name of the artical you would like to search
 
-It will show the last 4 edits to that article.  
+hit the submit button
