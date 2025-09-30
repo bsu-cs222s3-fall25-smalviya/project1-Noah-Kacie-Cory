@@ -46,7 +46,7 @@ public class GUI extends Application {
     private void handleSearch() {
         String article = articleInput.getText().trim();
         if (article.isEmpty()) {
-            showAlert("Input Error", "Please enter an article name.");
+            ErrorHandler.showError("Input Error", "Please enter an article name.");
             return;
         }
 
@@ -62,7 +62,7 @@ public class GUI extends Application {
                 String json = GetJsonData.readJsonAsStringFrom(connection);
                 Platform.runLater(() -> parseAndDisplayResults(json));
             } catch (IOException e) {
-                Platform.runLater(() -> showAlert("Network Error", "Could not connect to Wikipedia."));
+                Platform.runLater(() -> ErrorHandler.showError("Network Error", "Could not connect to Wikipedia."));
             } finally {
                 Platform.runLater(() -> {
                     searchButton.setDisable(false);
