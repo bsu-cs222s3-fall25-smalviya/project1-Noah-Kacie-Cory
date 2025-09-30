@@ -66,3 +66,12 @@ public class GUI extends Application {
             }
         }).start();
     }
+    private void parseAndDisplayResults(String rawJsonData) {
+        JSONObject root = new JSONObject(rawJsonData);
+        JSONObject query = root.getJSONObject("query");
+        JSONObject pages = query.getJSONObject("pages");
+
+        String pageId = pages.keys().next();
+        JSONObject page = pages.getJSONObject(pageId);
+
+        
